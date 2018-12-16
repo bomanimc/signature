@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <title>CodeSignature</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="atom-dark-syntax.css">
   </head>
@@ -13,12 +14,42 @@
     </div>
   </body>
   <script>
+    const rectSize = 15;
+    const maxValueRange = 94;
+
     const socket = io('http://localhost:3000');
     const codeSection = document.getElementById("code");
-    console.log(socket);
     socket.on('sendCode', function (data) {
       console.log(data);
       codeSection.innerHTML = data.html;
+      displaySignature();
     });
+
+    function setup() {
+      var canvas = createCanvas(window.innerWidth - 400, window.innerHeight);
+      canvas.parent('signature');
+      background(0, 0, 0);
+    }
+
+    function displaySignature() {
+      clear();
+      background(0, 0, 0);
+
+      const noClass = document.querySelectorAll("span:not([class])");
+      const colorToTextMap = [...noClass].map(span => {
+      	const color = window.getComputedStyle(span).getPropertyValue('color');
+        console.log(color);
+        const colorVals = color.match(/\d+/g).map(Number);
+        console.log(colorVals);
+        [...span.innerHTML].map((letter, idx) => {
+          const normChar = letter.charCodeAt(0) - maxValueRange;
+          noStroke();
+          fill(colorVals[0], colorVals[1], colorVals[2], 100);
+          rect(idx * rectSize, normChar * rectSize, rectSize, rectSize);
+        });
+      });
+    }
+  </script>
+  <script>
   </script>
 </html>

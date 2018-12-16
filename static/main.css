@@ -1,0 +1,22 @@
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+.root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+#code {
+  flex-grow: 1;
+  background-color: black;
+}
+
+#signature {
+  flex-grow: 1;
+}

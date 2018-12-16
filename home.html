@@ -1,0 +1,24 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CodeSignature</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="atom-dark-syntax.css">
+  </head>
+  <body>
+    <div class="root">
+      <div id="code"></div>
+      <div id="signature"></div>
+    </div>
+  </body>
+  <script>
+    const socket = io('http://localhost:3000');
+    const codeSection = document.getElementById("code");
+    console.log(socket);
+    socket.on('sendCode', function (data) {
+      console.log(data);
+      codeSection.innerHTML = data.html;
+    });
+  </script>
+</html>

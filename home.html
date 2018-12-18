@@ -4,8 +4,8 @@
     <title>CodeSignature</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <link rel="stylesheet" type="text/css" href="atom-dark-syntax.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/atom-dark-syntax.css">
   </head>
   <body>
     <div class="root">
@@ -15,56 +15,5 @@
       </div>
     </div>
   </body>
-  <script>
-    const rectSize = 15;
-    const maxValueRange = 94;
-
-    const socket = io('http://localhost:3000');
-    const codeSection = document.getElementById("code-section");
-    socket.on('sendCode', function (data) {
-      console.log(data);
-      codeSection.innerHTML = data.html;
-      displaySignature();
-    });
-
-    function setup() {
-      const dimensions = getCanvasDimensions();
-      const canvas = createCanvas(dimensions.width, dimensions.height);
-      canvas.parent('signature-canvas');
-      background(0, 0, 0);
-    }
-
-    function windowResized(){
-      const dimensions = getCanvasDimensions();
-      resizeCanvas(dimensions.width, dimensions.height);
-      displaySignature();
-    }
-
-    function displaySignature() {
-      clear();
-      background(0, 0, 0);
-
-      const noClass = document.querySelectorAll("span:not([class])");
-      const colorToTextMap = [...noClass].map(span => {
-      	const color = window.getComputedStyle(span).getPropertyValue('color');
-        const colorVals = color.match(/\d+/g).map(Number);
-        [...span.innerHTML].map((letter, idx) => {
-          const normChar = letter.charCodeAt(0) - maxValueRange;
-          noStroke();
-          fill(colorVals[0], colorVals[1], colorVals[2], 100);
-          rect(idx * rectSize, normChar * rectSize, rectSize, rectSize);
-        });
-      });
-    }
-
-    function getCanvasDimensions() {
-      const signatureCanvas = document.getElementById("signature-canvas");
-      return {
-        width: signatureCanvas.offsetWidth,
-        height: signatureCanvas.offsetHeight,
-      };
-    }
-  </script>
-  <script>
-  </script>
+  <script src="js/main.js"></script>
 </html>

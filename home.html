@@ -9,8 +9,10 @@
   </head>
   <body>
     <div class="root">
-      <div id="code"></div>
-      <div id="signature"></div>
+      <div id="code-section"></div>
+      <div id="signature-section">
+        <div id="signature-canvas"></div>
+      </div>
     </div>
   </body>
   <script>
@@ -18,7 +20,7 @@
     const maxValueRange = 94;
 
     const socket = io('http://localhost:3000');
-    const codeSection = document.getElementById("code");
+    const codeSection = document.getElementById("code-section");
     socket.on('sendCode', function (data) {
       console.log(data);
       codeSection.innerHTML = data.html;
@@ -26,9 +28,16 @@
     });
 
     function setup() {
-      var canvas = createCanvas(window.innerWidth - 400, window.innerHeight);
-      canvas.parent('signature');
+      const dimensions = getCanvasDimensions();
+      const canvas = createCanvas(dimensions.width, dimensions.height);
+      canvas.parent('signature-canvas');
       background(0, 0, 0);
+    }
+
+    function windowResized(){
+      const dimensions = getCanvasDimensions();
+      resizeCanvas(dimensions.width, dimensions.height);
+      displaySignature();
     }
 
     function displaySignature() {
@@ -38,9 +47,7 @@
       const noClass = document.querySelectorAll("span:not([class])");
       const colorToTextMap = [...noClass].map(span => {
       	const color = window.getComputedStyle(span).getPropertyValue('color');
-        console.log(color);
         const colorVals = color.match(/\d+/g).map(Number);
-        console.log(colorVals);
         [...span.innerHTML].map((letter, idx) => {
           const normChar = letter.charCodeAt(0) - maxValueRange;
           noStroke();
@@ -48,6 +55,14 @@
           rect(idx * rectSize, normChar * rectSize, rectSize, rectSize);
         });
       });
+    }
+
+    function getCanvasDimensions() {
+      const signatureCanvas = document.getElementById("signature-canvas");
+      return {
+        width: signatureCanvas.offsetWidth,
+        height: signatureCanvas.offsetHeight,
+      };
     }
   </script>
   <script>

@@ -5,6 +5,7 @@ const codeSection = document.getElementById("code-section");
 const optionsButton = document.getElementById("options-button");
 const optionsSheet = document.getElementById("options-sheet");
 const optionsClose = document.getElementById("options-close");
+const themeSelector = document.getElementById("theme-selector");
 
 function displaySignature() {
   clear();
@@ -41,6 +42,19 @@ optionsButton.addEventListener('click', () => {
 
 optionsClose.addEventListener('click', () => {
   optionsSheet.classList.toggle('option-sheet-hidden');
+});
+
+themeSelector.addEventListener('change', () => {
+  const themes = document.querySelectorAll('.alternate');
+  themes.forEach(theme => {
+    if (theme.classList.contains(themeSelector.value)) {
+      theme.disabled = false;
+    } else {
+      theme.disabled = true;
+    }
+  });
+
+  displaySignature();
 });
 
 // --------- P5 Sketch Functions ------------

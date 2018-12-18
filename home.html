@@ -5,15 +5,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/atom-dark-syntax.css">
+    <link rel="stylesheet" type="text/css" href="css/themes/atom-dark-syntax.css">
+    <link rel="stylesheet" type="text/css" href="css/themes/atom-light-syntax.css">
+    <link rel="stylesheet" type="text/css" href="css/themes/solarized-dark-syntax.css">
+    <link rel="stylesheet" type="text/css" href="css/themes/solarized-light-syntax.css">
   </head>
   <body>
     <div class="root">
       <div class="section" id="code-section"></div>
       <div class="section" id="signature-section">
         <div id="signature-canvas"></div>
+        <div id="options-button"></div>
+        <div class="option-sheet-hidden" id="options-sheet">
+          <div id="options-close">Close</div>
+          <div>
+            <p>Themes</p>
+            <select id="theme-selector">
+              <option value="atom-dark-syntax">Atom Dark Syntax</option>
+              <option value="atom-light-syntax">Atom Light Syntax</option>
+              <option value="solarized-dark-syntax">Solarized Dark Syntax</option>
+              <option value="solarized-light-syntax">Solarized Light Syntax</option>
+            </select>
+          <div>
+        </div>
       </div>
-    </div>
   </body>
   <script src="js/main.js"></script>
 </html>

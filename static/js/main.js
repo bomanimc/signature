@@ -2,6 +2,9 @@ const rectSize = 15;
 const maxValueRange = 94;
 const socket = io('http://localhost:3000');
 const codeSection = document.getElementById("code-section");
+const optionsButton = document.getElementById("options-button");
+const optionsSheet = document.getElementById("options-sheet");
+const optionsClose = document.getElementById("options-close");
 
 function displaySignature() {
   clear();
@@ -30,6 +33,14 @@ function getCanvasDimensions() {
 socket.on('sendCode', function (data) {
   codeSection.innerHTML = data.html;
   displaySignature();
+});
+
+optionsButton.addEventListener('click', () => {
+  optionsSheet.classList.toggle('option-sheet-hidden');
+});
+
+optionsClose.addEventListener('click', () => {
+  optionsSheet.classList.toggle('option-sheet-hidden');
 });
 
 // --------- P5 Sketch Functions ------------

@@ -14,6 +14,33 @@ body {
   border: 1px solid white;
 }
 
+#options-button {
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#options-sheet {
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 300px;
+  width: 150px;
+  transition: width 2s linear;
+  transition: height 2s linear;
+  padding: 8px;
+}
+
+#options-sheet.option-sheet-hidden {
+  display: none;
+  height: 0px;
+  width: 0px;
+}
+
 #code-section {
   color: white;
   font-size: 10px;
@@ -26,6 +53,7 @@ body {
 
 #signature-section {
   display: flex;
+  position: relative;
   padding: 8px 8px;
   margin: 16px 16px 16px 0px;
   flex-grow: 1;

@@ -4,6 +4,7 @@
     <title>CodeSignature</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" class="alternate atom-dark-syntax" href="css/themes/atom-dark-syntax.css">
     <link rel="stylesheet" type="text/css" class="alternate atom-light-syntax" href="css/themes/atom-light-syntax.css">
@@ -15,11 +16,9 @@
       <div class="section" id="code-section"></div>
       <div class="section" id="signature-section">
         <div id="signature-canvas"></div>
-        <div id="options-button"></div>
+        <div id="options-button"><i class="material-icons">settings</i></div>
         <div class="option-sheet-hidden" id="options-sheet">
-          <div id="options-close">Close</div>
           <div>
-            <p>Themes</p>
             <select id="theme-selector">
               <option value="atom-dark-syntax" selected="selected">Atom Dark Syntax</option>
               <option value="atom-light-syntax">Atom Light Syntax</option>
@@ -27,6 +26,7 @@
               <option value="solarized-light-syntax">Solarized Light Syntax</option>
             </select>
           <div>
+          <a id="options-close"><i class="material-icons">minimize</i></a>
         </div>
       </div>
   </body>

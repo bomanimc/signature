@@ -1,4 +1,4 @@
-const rectSize = 15;
+const rectSize = 20;
 const maxValueRange = 94;
 const socket = io('http://localhost:3000');
 const codeSection = document.getElementById("code-section");

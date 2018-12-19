@@ -66,6 +66,7 @@ body {
 #code-section {
   color: white;
   font-size: 10px;
+  font-weight: bold;
   width: 400px;
   margin: 16px 16px;
   padding: 0px 8px;

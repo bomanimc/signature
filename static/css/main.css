@@ -31,7 +31,7 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
-  height: 50px;
+  height: auto;
   width: 150px;
   transition: width 2s linear;
   transition: height 2s linear;
@@ -51,7 +51,16 @@ body {
   justify-content: flex-end;
   position: absolute;
   bottom: 8px;
-  right: 8px;
+  right: 4px;
+}
+
+.selectors {
+  margin-bottom: 8px;
+}
+
+.selectors > select {
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 #code-section {

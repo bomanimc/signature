@@ -18,17 +18,21 @@
         <div id="signature-canvas"></div>
         <div id="options-button"><i class="material-icons">settings</i></div>
         <div class="option-sheet-hidden" id="options-sheet">
-          <div>
+          <div class="selectors">
             <select id="theme-selector">
               <option value="atom-dark-syntax" selected="selected">Atom Dark Syntax</option>
               <option value="atom-light-syntax">Atom Light Syntax</option>
               <option value="solarized-dark-syntax">Solarized Dark Syntax</option>
               <option value="solarized-light-syntax">Solarized Light Syntax</option>
             </select>
+            <select id="viz-selector">
+              <option value="ascii-structure" selected="selected">ASCII Structure</option>
+            </select>
           <div>
           <a id="options-close"><i class="material-icons">minimize</i></a>
         </div>
       </div>
   </body>
+  <script src="js/visualization.js"></script>
   <script src="js/main.js"></script>
 </html>

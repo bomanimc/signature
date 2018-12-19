@@ -6,21 +6,16 @@ const optionsButton = document.getElementById("options-button");
 const optionsSheet = document.getElementById("options-sheet");
 const optionsClose = document.getElementById("options-close");
 const themeSelector = document.getElementById("theme-selector");
+const vizSelector = document.getElementById("viz-selector");
 
 function displaySignature() {
   clear();
 
-  const noClass = document.querySelectorAll("span:not([class])");
-  const colorToTextMap = [...noClass].map(span => {
-    const color = window.getComputedStyle(span).getPropertyValue('color');
-    const colorVals = color.match(/\d+/g).map(Number);
-    [...span.innerHTML].map((letter, idx) => {
-      const normChar = letter.charCodeAt(0) - maxValueRange;
-      noStroke();
-      fill(...colorVals, 100);
-      rect(idx * rectSize, normChar * rectSize, rectSize, rectSize);
-    });
-  });
+  switch (vizSelector.value) {
+    case 'ascii-structure':
+      asciiStructure();
+      break;
+  }
 }
 
 function getCanvasDimensions() {
@@ -54,6 +49,10 @@ themeSelector.addEventListener('change', () => {
     }
   });
 
+  displaySignature();
+});
+
+vizSelector.addEventListener('change', () => {
   displaySignature();
 });
 
